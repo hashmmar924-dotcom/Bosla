@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>بوصلة — قوالب سكريبتات | لونج فيديو (يوتيوب) + شورت فيديو (تيك توك)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0d1424; --ink-2:#1e2b45; --muted:#5f6f8c; --line:#dfe6f1; --soft:#f6f9fd;
+    --yt:#0ea5e9; --yt-d:#075985; --tt:#ec4899; --tt-d:#9d174d; --gold:#f59e0b;
+    --rad:14px;
+  }
+  *{box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  @page{ size:A4; margin:11mm 10mm 13mm; }
+  html,body{margin:0;padding:0}
+  body{
+    font-family:"Tajawal","Cairo","Noto Sans Arabic","Segoe UI",Tahoma,"Noto Kufi Arabic",sans-serif;
+    background:#e9eef6; color:var(--ink); font-size:11.2pt; line-height:1.85;
+  }
+  .sheet{
+    max-width:200mm; margin:14px auto 40px; background:#fff; padding:9mm 8mm 11mm;
+    box-shadow:0 14px 40px rgba(13,20,36,.12); border-radius:6px;
+  }
+
+  /* ============ COVER / HEADER ============ */
+  .cover{
+    position:relative; overflow:hidden; border-radius:var(--rad); padding:16px 18px;
+    background:
+      radial-gradient(120% 160% at 100% 0%, #1e3a8a 0%, #0d1424 55%, #0d1424 100%);
+    color:#fff; margin-bottom:14px;
+  }
+  .cover::after{
+    content:""; position:absolute; inset:auto -40px -70px auto; width:230px; height:230px;
+    border-radius:50%; background:radial-gradient(circle at 30% 30%, rgba(245,158,11,.55), rgba(245,158,11,0) 62%);
+  }
+  .cover-top{display:flex; align-items:center; gap:14px; position:relative; z-index:2}
+  .logo{
+    width:64px; height:64px; flex:0 0 64px; border-radius:50%; display:grid; place-items:center;
+    background:linear-gradient(145deg,#f59e0b,#f97316); box-shadow:0 8px 22px rgba(245,158,11,.35);
+  }
+  .logo svg{width:40px;height:40px}
+  .brand h1{margin:0; font-size:26pt; font-weight:900; letter-spacing:.5px; line-height:1.2}
+  .brand p{margin:2px 0 0; font-size:11pt; color:#c7d2fe; font-weight:600}
+  .cover h2{
+    position:relative; z-index:2; margin:14px 0 0; font-size:13.5pt; font-weight:800;
+    border-top:1px solid rgba(255,255,255,.16); padding-top:12px;
+  }
+  .cover .chips{position:relative; z-index:2; display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+  .chip{
+    background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.22);
+    padding:5px 12px; border-radius:999px; font-size:9.5pt; font-weight:700;
+  }
+  .chip.yt{background:rgba(14,165,233,.22); border-color:rgba(56,189,248,.45)}
+  .chip.tt{background:rgba(236,72,153,.22); border-color:rgba(244,114,182,.45)}
+
+  /* ============ GENERIC BLOCKS ============ */
+  h3.sec{
+    display:flex; align-items:center; gap:10px; font-size:14pt; font-weight:900; margin:18px 0 10px;
+    padding:10px 14px; border-radius:12px; color:#fff;
+  }
+  h3.sec .num{
+    width:26px;height:26px;flex:0 0 26px;border-radius:50%;display:grid;place-items:center;
+    background:rgba(255,255,255,.22); font-size:11pt; font-weight:900;
+  }
+  h3.sec.yt{background:linear-gradient(90deg,var(--yt-d),var(--yt))}
+  h3.sec.tt{background:linear-gradient(90deg,var(--tt-d),var(--tt))}
+  h3.sec.nt{background:linear-gradient(90deg,#1e293b,#475569)}
+  h3.sec small{font-weight:600; opacity:.85; font-size:9.5pt; margin-inline-start:auto}
+
+  .h4{
+    font-size:11.5pt; font-weight:900; color:var(--ink-2); margin:14px 0 8px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .h4::before{content:""; width:5px; height:16px; border-radius:3px; background:var(--gold)}
+  .h4.yt::before{background:var(--yt)} .h4.tt::before{background:var(--tt)}
+
+  .grid{display:grid; gap:8px}
+  .g2{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:1fr 1fr 1fr}
+  .g4{grid-template-columns:repeat(4,1fr)}
+
+  .fld{border:1px solid var(--line); border-radius:10px; padding:6px 9px; background:var(--soft); min-height:52px}
+  .fld > span{display:block; font-size:8.8pt; font-weight:800; color:var(--muted); margin-bottom:2px}
+  .fld .lines{height:22px; border-bottom:1px dotted #c3cfe0}
+  .fld.short{min-height:46px}
+
+  .tip{
+    border-radius:12px; padding:10px 13px; font-size:10.3pt; line-height:1.75;
+    background:#fffbeb; border:1px solid #fde68a; color:#78350f;
+  }
+  .tip b{color:#92400e}
+
+  /* ============ STEPS ============ */
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:9px; margin:10px 0 4px}
+  .step{background:var(--soft); border:1px solid var(--line); border-radius:12px; padding:10px 12px}
+  .step .n{
+    display:inline-grid; place-items:center; width:22px;height:22px;border-radius:50%;
+    background:var(--ink); color:#fff; font-size:9.5pt; font-weight:900; margin-bottom:5px;
+  }
+  .step b{display:block; font-size:10.5pt}
+  .step p{margin:3px 0 0; font-size:9.5pt; color:var(--muted); line-height:1.65}
+
+  /* ============ TABLES ============ */
+  table{width:100%; border-collapse:collapse; margin:6px 0 4px; table-layout:fixed}
+  thead{display:table-header-group}
+  th{
+    background:var(--ink); color:#fff; font-size:9.3pt; font-weight:800; padding:7px 6px;
+    border:1px solid #22304d; text-align:right; line-height:1.5;
+  }
+  th.yt{background:var(--yt-d); border-color:#0b4a6f} th.tt{background:var(--tt-d); border-color:#831843}
+  td{border:1px solid var(--line); padding:6px; height:1.35cm; vertical-align:top; font-size:10pt}
+  td.dot{background-image:repeating-linear-gradient(transparent 0 27px, #eef3fa 27px 28px)}
+  tbody tr:nth-child(even) td{background-color:#fbfdff}
+  tbody tr:nth-child(even) td.dot{background-image:repeating-linear-gradient(transparent 0 27px, #eef3fa 27px 28px)}
+  .c{text-align:center}
+  tbody tr{break-inside:avoid}
+  tr,td,th{break-inside:avoid}
+
+  /* ============ CLIP CARDS (SHORTS) ============ */
+  .clips{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+  .clip{border:1px solid #f3cfe0; border-radius:var(--rad); overflow:hidden; break-inside:avoid; background:#fff}
+  .clip .head{
+    background:linear-gradient(90deg,var(--tt-d),var(--tt)); color:#fff; padding:7px 12px;
+    display:flex; align-items:center; gap:8px; font-weight:900; font-size:11pt;
+  }
+  .clip .head .tag{
+    background:rgba(255,255,255,.2); border-radius:999px; padding:2px 9px; font-size:8.6pt; font-weight:700; margin-inline-start:auto
+  }
+  .clip .body{padding:9px 11px}
+  .row2{display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:6px}
+  .mini{border:1px solid var(--line); border-radius:8px; padding:4px 7px; background:var(--soft)}
+  .mini span{font-size:8.4pt; font-weight:800; color:var(--muted); display:block}
+  .mini .l{height:19px; border-bottom:1px dotted #c3cfe0}
+  .wlab{font-size:9.2pt; font-weight:800; color:var(--tt-d); margin:6px 0 2px}
+  .wline{height:21px; border-bottom:1px dotted #cfd9e8}
+  .hook{background:#fff1f7; border:1px dashed #f0a6c8; border-radius:9px; padding:6px 9px}
+  .hook .wlab{color:#be185d; margin-top:0}
+
+  /* ============ CHECKLIST ============ */
+  .check{display:grid; grid-template-columns:1fr 1fr; gap:5px 16px; margin:6px 0}
+  .check div{font-size:10.2pt; padding:3px 0; border-bottom:1px dotted #e2e8f2}
+  .check div::before{content:"☐ "; color:var(--tt); font-weight:900}
+
+  .foot{
+    margin-top:16px; padding-top:9px; border-top:2px solid var(--ink); display:flex;
+    justify-content:space-between; font-size:9pt; color:var(--muted); font-weight:700;
+  }
+  .foot .pg::after{content:" — صفحة "; }
+
+  /* ============ TOOLBAR (لا تُطبع) ============ */
+  .bar{
+    position:sticky; top:0; z-index:9; display:flex; gap:9px; align-items:center;
+    max-width:200mm; margin:14px auto -4px; padding:9px 12px; border-radius:12px;
+    background:#0d1424; color:#fff; box-shadow:0 8px 24px rgba(13,20,36,.2)
+  }
+  .bar b{font-size:10.5pt}
+  .bar .sp{margin-inline-start:auto; display:flex; gap:8px}
+  .btn{
+    cursor:pointer; border:0; border-radius:9px; padding:8px 14px; font-family:inherit;
+    font-weight:800; font-size:10pt; background:#f59e0b; color:#241a02;
+  }
+  .btn.ghost{background:rgba(255,255,255,.14); color:#fff}
+  .btn:active{transform:translateY(1px)}
+
+  /* ============ PRINT ============ */
+  @media print{
+    body{background:#fff; font-size:10.6pt}
+    .sheet{box-shadow:none; margin:0; max-width:none; padding:0; border-radius:0}
+    .bar,.no-print{display:none !important}
+    .cover{border-radius:10px; -webkit-print-color-adjust:exact}
+    h3.sec,.clip .head,thead th,.hook,.tip,.fld,.step,.mini{-webkit-print-color-adjust:exact}
+    .pb{break-before:page}
+    h3.sec{break-after:avoid}
+    .h4{break-after:avoid}
+    .clips{gap:8px}
+  }
+  @media (max-width:720px){
+    .g4,.g3,.steps,.clips,.check,.row2{grid-template-columns:1fr}
+    .sheet{padding:14px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= TOOLBAR (تُخفى عند الطباعة) ================= -->
+<div class="bar no-print">
+  <b>بوصلة — قوالب سكريبتات</b>
+  <div class="sp">
+    <button class="btn ghost" onclick="addRow()">+ صف سكريبت</button>
+    <button class="btn ghost" onclick="addClip()">+ شورت</button>
+    <button class="btn" onclick="window.print()">🖨️ طباعة / حفظ PDF</button>
+  </div>
+</div>
+
+<div class="sheet">
+
+  <!-- ================= الغلاف ================= -->
+  <header class="cover">
+    <div class="cover-top">
+      <div class="logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#241a02" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9.2"/><path d="M15.6 8.4l-2.1 5.1-5.1 2.1 2.1-5.1z" fill="#241a02" stroke="none"/>
+        </svg>
+      </div>
+      <div class="brand">
+        <h1>بوصلة</h1>
+        <p>بودكاست · قوالب سكريبتات جاهزة للطباعة</p>
+      </div>
+    </div>
+    <h2>سكريبت الحلقة الطويلة (يوتيوب) &nbsp;+&nbsp; اقتطاع الشورت (تيك توك) من نفس الحلقة</h2>
+    <div class="chips">
+      <span class="chip yt">اللونج فيديو — يوتيوب</span>
+      <span class="chip tt">الشورت فيديو — تيك توك</span>
+      <span class="chip">بودكاست بين شخصين أو أكثر</span>
+      <span class="chip">A4 · جاهز للطباعة</span>
+    </div>
+  </header>
+
+  <!-- ================= دليل التحويل ================= -->
+  <div class="steps">
+    <div class="step">
+      <span class="n">١</span>
+      <b>اكتب اللونج أولاً</b>
+      <p>اسجّل/اكتب الحلقة كاملة في القسم الأول، وعلّم بـ ★ على كل لحظة قوية أثناء الكتابة.</p>
+    </div>
+    <div class="step">
+      <span class="n">٢</span>
+      <b>التقط اللحظات</b>
+      <p>كل ★ = شورت محتمل. انقل التوقيت + النص إلى بطاقة شورت في القسم الثاني.</p>
+    </div>
+    <div class="step">
+      <span class="n">٣</span>
+      <b>أعد الصياغة ٩:١٦</b>
+      <p>هوك في أول ٣ ثواني، فكرة واحدة فقط، ونهاية تدفع للمتابعة (CUT → CAPTION → POST).</p>
+    </div>
+  </div>
+
+  <!-- ================= القسم ١: اللونج ================= -->
+  <h3 class="sec yt"><span class="num">١</span> اللونج فيديو — يوتيوب <small>YouTube Long-form Script</small></h3>
+
+  <div class="h4 yt">بيانات الحلقة</div>
+  <div class="grid g4">
+    <div class="fld"><span>اسم القناة</span><div class="lines">بوصلة</div></div>
+    <div class="fld"><span>رقم الحلقة</span><div class="lines"></div></div>
+    <div class="fld"><span>تاريخ النشر / التصوير</span><div class="lines"></div></div>
+    <div class="fld"><span>المدة الكلية</span><div class="lines"></div></div>
+  </div>
+  <div class="grid g2" style="margin-top:8px">
+    <div class="fld"><span>عنوان الحلقة (المقترح)</span><div class="lines"></div></div>
+    <div class="fld"><span>الجمهور المستهدف / الفكرة الواحدة الكبرى</span><div class="lines"></div></div>
+  </div>
+  <div class="grid g3" style="margin-top:8px">
+    <div class="fld short"><span>المتحدث ١ (المضيف)</span><div class="lines"></div></div>
+    <div class="fld short"><span>المتحدث ٢</span><div class="lines"></div></div>
+    <div class="fld short"><span>المتحدث ٣ / ضيف</span><div class="lines"></div></div>
+  </div>
+
+  <div class="h4 yt">هيكل الحلقة (البنية قبل الكتابة)</div>
+  <table>
+    <colgroup><col style="width:26%"><col style="width:16%"><col style="width:58%"></colgroup>
+    <thead>
+      <tr><th class="yt">المقطع</th><th class="yt c">التوقيت</th><th class="yt">الوعد / الهدف من المقطع</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><b>الافتتاحية (Hook)</b><br><span style="font-size:9pt;color:#5f6f8c">جملة تشويق + وعد الحلقة</span></td><td class="c"><span dir="ltr" style="unicode-bidi:isolate">0:00 – 0:45</span></td><td class="dot"></td></tr>
+      <tr><td><b>التعريف بالحضور</b><br><span style="font-size:9pt;color:#5f6f8c">من أنتم + لماذا يستمع لي</span></td><td class="c"><span dir="ltr" style="unicode-bidi:isolate">0:45 – 3:00</span></td><td class="dot"></td></tr>
+      <tr><td><b>المحور الأول</b></td><td class="c"></td><td class="dot"></td></tr>
+      <tr><td><b>المحور الثاني</b></td><td class="c"></td><td class="dot"></td></tr>
+      <tr><td><b>المحور الثالث</b></td><td class="c"></td><td class="dot"></td></tr>
+      <tr><td><b>لحظة الذروة / الخلاف الودي</b></td><td class="c"></td><td class="dot"></td></tr>
+      <tr><td><b>الخاتمة + CTA</b><br><span style="font-size:9pt;color:#5f6f8c">اشترك — علّق — الحلقة القادمة</span></td><td class="c">آخر 3 د</td><td class="dot"></td></tr>
+    </tbody>
+  </table>
+
+  <div class="h4 yt">سكريبت الحلقة التفصيلي <span style="font-weight:600;font-size:9.5pt;color:#5f6f8c">(علّم ★ على اللحظات الصالحة للشورت)</span></div>
+  <table id="longTable">
+    <colgroup>
+      <col style="width:6%"><col style="width:13%"><col style="width:13%"><col style="width:40%"><col style="width:21%"><col style="width:7%">
+    </colgroup>
+    <thead>
+      <tr>
+        <th class="yt c">#</th>
+        <th class="yt c">التوقيت<br>من – إلى</th>
+        <th class="yt">المتحدث</th>
+        <th class="yt">النص كما يُقال (كتابة منطوقة)</th>
+        <th class="yt">ملاحظات الإخراج<br><span style="font-weight:600;font-size:8.4pt">كاميرا / إضاءة / مونتاج</span></th>
+        <th class="yt c">★</th>
+      </tr>
+    </thead>
+    <tbody id="longBody">
+      <tr><td class="c">1</td><td></td><td></td><td class="dot"></td><td class="dot"></td><td class="c">☐</td></tr>
+      <tr><td class="c">2</td><td></td><td></td><td class="dot"></td><td class="dot"></td><td class="c">☐</td></tr>
+      <tr><td class="c">3</td><td></td><td></td><td class="dot"></td><td class="dot"></td><td class="c">☐</td></tr>
+      <tr><td class="c">4</td><td></td><td></td><td class="dot"></td><td class="dot"></td><td class="c">☐</td></tr>
+      <tr><td class="c">5</td><td></td><td></td><td class="dot"></td><td class="dot"></td><td class="c">☐</td></tr>
+      <tr><td class="c">6</td><td></td><td></td><td class="dot"></td><td class="dot"></td><td class="c">☐</td></tr>
+      <tr><td class="c">7</td><td></td><td></td><td class="dot"></td><td class="dot"></td><td class="c">☐</td></tr>
+      <tr><td class="c">8</td><td></td><td></td><td class="dot"></td><td class="dot"></td><td class="c">☐</td></tr>
+      <tr><td class="c">9</td><td></td><td></td><td class="dot"></td><td class="dot"></td><td class="c">☐</td></tr>
+      <tr><td class="c">10</td><td></td><td></td><td class="dot"></td><td class="dot"></td><td class="c">☐</td></tr>
+      <tr><td class="c">11</td><td></td><td></td><td class="dot"></td><td class="dot"></td><td class="c">☐</td></tr>
+      <tr><td class="c">12</td><td></td><td></td><td class="dot"></td><td class="dot"></td><td class="c">☐</td></tr>
+      <tr><td class="c">13</td><td></td><td></td><td class="dot"></td><td class="dot"></td><td class="c">☐</td></tr>
+      <tr><td class="c">14</td><td></td><td></td><td class="dot"></td><td class="dot"></td><td class="c">☐</td></tr>
+    </tbody>
+  </table>
+
+  <div class="grid g2" style="margin-top:8px">
+    <div class="fld"><span>ملاحظات التصوير (إضاءة / مايكات / خلفية)</span><div class="lines"></div><div class="lines"></div></div>
+    <div class="fld"><span>قائمة اللحظات المختارة للشورتات (أرقام الصفوف)</span><div class="lines"></div><div class="lines"></div></div>
+  </div>
+
+  <!-- ================= القسم ٢: الشورت ================= -->
+  <h3 class="sec tt"><span class="num">٢</span> شورت فيديو — تيك توك <small>TikTok Shorts · 9:16 · 15–60 ث</small></h3>
+
+  <div class="tip">
+    <b>قاعدة الاقتطاع:</b> لا تنسخ المشهد كما هو — ابدأ من <b>أقوى جملة</b> (الهوك) وارجع للسياق بعد ٣ ثواني.
+    شورت واحد = فكرة واحدة. احذف الأسماء الطويلة، واكتب <b>النص على الشاشة</b> لكل جملة مهمة (أكثر من ٨٥٪ يشاهدون بدون صوت).
+  </div>
+
+  <div class="h4 tt">بطاقات الشورتات (من اللونج → إلى تيك توك)</div>
+  <div class="clips" id="clipWrap">
+
+    <!-- ===== قالب بطاقة شورت (يتكرر) ===== -->
+    <article class="clip">
+      <div class="head">شورت ١ <span class="tag">تيك توك · ٩:١٦</span></div>
+      <div class="body">
+        <div class="row2">
+          <div class="mini"><span>مأخوذ من اللونج (من – إلى)</span><div class="l"></div></div>
+          <div class="mini"><span>مدة الشورت / الصوت أو التريند</span><div class="l"></div></div>
+        </div>
+        <div class="hook">
+          <div class="wlab">الهوك — أول ٣ ثواني (جملة توقف التمرير)</div>
+          <div class="wline"></div><div class="wline"></div>
+        </div>
+        <div class="wlab">الفكرة الأساسية (سطرين)</div>
+        <div class="wline"></div><div class="wline"></div>
+        <div class="wlab">التصعيد / اللحظة الصادمة أو الطريفة</div>
+        <div class="wline"></div><div class="wline"></div>
+        <div class="wlab">النهاية + دعوة للتفاعل (CTA)</div>
+        <div class="wline"></div>
+        <div class="wlab">الكابشن + الهاشتاجات</div>
+        <div class="wline"></div>
+        <div class="wlab">ملاحظات المونتاج (قطع / نص على الشاشة / ترجمة)</div>
+        <div class="wline"></div>
+      </div>
+    </article>
+
+    <article class="clip">
+      <div class="head">شورت ٢ <span class="tag">تيك توك · ٩:١٦</span></div>
+      <div class="body">
+        <div class="row2">
+          <div class="mini"><span>مأخوذ من اللونج (من – إلى)</span><div class="l"></div></div>
+          <div class="mini"><span>مدة الشورت / الصوت أو التريند</span><div class="l"></div></div>
+        </div>
+        <div class="hook">
+          <div class="wlab">الهوك — أول ٣ ثواني (جملة توقف التمرير)</div>
+          <div class="wline"></div><div class="wline"></div>
+        </div>
+        <div class="wlab">الفكرة الأساسية (سطرين)</div>
+        <div class="wline"></div><div class="wline"></div>
+        <div class="wlab">التصعيد / اللحظة الصادمة أو الطريفة</div>
+        <div class="wline"></div><div class="wline"></div>
+        <div class="wlab">النهاية + دعوة للتفاعل (CTA)</div>
+        <div class="wline"></div>
+        <div class="wlab">الكابشن + الهاشتاجات</div>
+        <div class="wline"></div>
+        <div class="wlab">ملاحظات المونتاج (قطع / نص على الشاشة / ترجمة)</div>
+        <div class="wline"></div>
+      </div>
+    </article>
+
+    <article class="clip">
+      <div class="head">شورت ٣ <span class="tag">تيك توك · ٩:١٦</span></div>
+      <div class="body">
+        <div class="row2">
+          <div class="mini"><span>مأخوذ من اللونج (من – إلى)</span><div class="l"></div></div>
+          <div class="mini"><span>مدة الشورت / الصوت أو التريند</span><div class="l"></div></div>
+        </div>
+        <div class="hook">
+          <div class="wlab">الهوك — أول ٣ ثواني (جملة توقف التمرير)</div>
+          <div class="wline"></div><div class="wline"></div>
+        </div>
+        <div class="wlab">الفكرة الأساسية (سطرين)</div>
+        <div class="wline"></div><div class="wline"></div>
+        <div class="wlab">التصعيد / اللحظة الصادمة أو الطريفة</div>
+        <div class="wline"></div><div class="wline"></div>
+        <div class="wlab">النهاية + دعوة للتفاعل (CTA)</div>
+        <div class="wline"></div>
+        <div class="wlab">الكابشن + الهاشتاجات</div>
+        <div class="wline"></div>
+        <div class="wlab">ملاحظات المونتاج (قطع / نص على الشاشة / ترجمة)</div>
+        <div class="wline"></div>
+      </div>
+    </article>
+
+    <article class="clip">
+      <div class="head">شورت ٤ <span class="tag">تيك توك · ٩:١٦</span></div>
+      <div class="body">
+        <div class="row2">
+          <div class="mini"><span>مأخوذ من اللونج (من – إلى)</span><div class="l"></div></div>
+          <div class="mini"><span>مدة الشورت / الصوت أو التريند</span><div class="l"></div></div>
+        </div>
+        <div class="hook">
+          <div class="wlab">الهوك — أول ٣ ثواني (جملة توقف التمرير)</div>
+          <div class="wline"></div><div class="wline"></div>
+        </div>
+        <div class="wlab">الفكرة الأساسية (سطرين)</div>
+        <div class="wline"></div><div class="wline"></div>
+        <div class="wlab">التصعيد / اللحظة الصادمة أو الطريفة</div>
+        <div class="wline"></div><div class="wline"></div>
+        <div class="wlab">النهاية + دعوة للتفاعل (CTA)</div>
+        <div class="wline"></div>
+        <div class="wlab">الكابشن + الهاشتاجات</div>
+        <div class="wline"></div>
+        <div class="wlab">ملاحظات المونتاج (قطع / نص على الشاشة / ترجمة)</div>
+        <div class="wline"></div>
+      </div>
+    </article>
+
+    <article class="clip">
+      <div class="head">شورت ٥ <span class="tag">تيك توك · ٩:١٦</span></div>
+      <div class="body">
+        <div class="row2">
+          <div class="mini"><span>مأخوذ من اللونج (من – إلى)</span><div class="l"></div></div>
+          <div class="mini"><span>مدة الشورت / الصوت أو التريند</span><div class="l"></div></div>
+        </div>
+        <div class="hook">
+          <div class="wlab">الهوك — أول ٣ ثواني (جملة توقف التمرير)</div>
+          <div class="wline"></div><div class="wline"></div>
+        </div>
+        <div class="wlab">الفكرة الأساسية (سطرين)</div>
+        <div class="wline"></div><div class="wline"></div>
+        <div class="wlab">التصعيد / اللحظة الصادمة أو الطريفة</div>
+        <div class="wline"></div><div class="wline"></div>
+        <div class="wlab">النهاية + دعوة للتفاعل (CTA)</div>
+        <div class="wline"></div>
+        <div class="wlab">الكابشن + الهاشتاجات</div>
+        <div class="wline"></div>
+        <div class="wlab">ملاحظات المونتاج (قطع / نص على الشاشة / ترجمة)</div>
+        <div class="wline"></div>
+      </div>
+    </article>
+
+    <article class="clip">
+      <div class="head">شورت ٦ <span class="tag">تيك توك · ٩:١٦</span></div>
+      <div class="body">
+        <div class="row2">
+          <div class="mini"><span>مأخوذ من اللونج (من – إلى)</span><div class="l"></div></div>
+          <div class="mini"><span>مدة الشورت / الصوت أو التريند</span><div class="l"></div></div>
+        </div>
+        <div class="hook">
+          <div class="wlab">الهوك — أول ٣ ثواني (جملة توقف التمرير)</div>
+          <div class="wline"></div><div class="wline"></div>
+        </div>
+        <div class="wlab">الفكرة الأساسية (سطرين)</div>
+        <div class="wline"></div><div class="wline"></div>
+        <div class="wlab">التصعيد / اللحظة الصادمة أو الطريفة</div>
+        <div class="wline"></div><div class="wline"></div>
+        <div class="wlab">النهاية + دعوة للتفاعل (CTA)</div>
+        <div class="wline"></div>
+        <div class="wlab">الكابشن + الهاشتاجات</div>
+        <div class="wline"></div>
+        <div class="wlab">ملاحظات المونتاج (قطع / نص على الشاشة / ترجمة)</div>
+        <div class="wline"></div>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- ================= القسم ٣: تشيك ليست ================= -->
+  <h3 class="sec nt"><span class="num">٣</span> تشيك ليست سريع قبل النشر <small>Pre-publish Checklist</small></h3>
+
+  <div class="h4">اللونج فيديو (يوتيوب)</div>
+  <div class="check">
+    <div>هوك أول ٣٠ ثانية فيه وعد واضح للحلقة</div>
+    <div>الـ Intro قصير (أقل من ٤٥ ثانية) بدون مقدمات طويلة</div>
+    <div>كل محور مكتوب في سكريبت منفصل بأرقام</div>
+    <div>الصوت نظيف ومافي تداخل كلام (Talk-over)</div>
+    <div>الترجمة/الكابشن مضبوطة على الأسماء والمصطلحات</div>
+    <div>نهاية الحلقة تعيد ذكر اسم القناة + CTA</div>
+  </div>
+
+  <div class="h4 tt">الشورت فيديو (تيك توك)</div>
+  <div class="check">
+    <div>الهوك في أول ٣ ثواني (بدون مقدمة)</div>
+    <div>أبعاد ٩:١٦ والكادر على وجه المتحدث</div>
+    <div>نص على الشاشة للجملة الأهم</div>
+    <div>فكرة واحدة فقط في الشورت</div>
+    <div>كابشن فيه سؤال يشجّع التعليقات</div>
+    <div>الهاشتاجات: ٣–٥ هاشتاجات دقيقة وذات صلة</div>
+    <div>وضع علامة على اسم القناة/الهاندل في الفيديو</div>
+    <div>تنزيل شورت جديد كل يوم (بنفس شكل الغلاف والخط)</div>
+  </div>
+
+  <div class="tip" style="margin-top:10px">
+    <b>تلميح لسرعة العمل:</b> افتح الملف → اضغط «+ صف سكريبت» و«+ شورت» لإضافة أكبر عدد تحتاجه → املأ بالكتابة اليدوية بعد الطباعة،
+    أو اكتب داخل الملف قبل الطباعة ثم اضغط «طباعة / حفظ PDF» واختر حجم A4 و«طباعة الهوامش الافتراضية».
+  </div>
+
+  <div class="h4">صفحة ملاحظات حرة (أفكار شورتات إضافية / جمل قالها الضيف أثناء التصوير)</div>
+  <div class="notes">
+    <div class="wline" style="height:26px"></div><div class="wline" style="height:26px"></div>
+    <div class="wline" style="height:26px"></div><div class="wline" style="height:26px"></div>
+    <div class="wline" style="height:26px"></div><div class="wline" style="height:26px"></div>
+    <div class="wline" style="height:26px"></div><div class="wline" style="height:26px"></div>
+    <div class="wline" style="height:26px"></div><div class="wline" style="height:26px"></div>
+    <div class="wline" style="height:26px"></div><div class="wline" style="height:26px"></div>
+    <div class="wline" style="height:26px"></div><div class="wline" style="height:26px"></div>
+  </div>
+
+  <div class="foot">
+    <span>بوصلة — قالب سكريبتات (لونج + شورت)</span>
+    <span class="pg">ص</span>
+  </div>
+</div>
+
+<script>
+  function addRow(){
+    var tb = document.getElementById('longBody');
+    var i  = tb.rows.length + 1;
+    var tr = document.createElement('tr');
+    tr.innerHTML = '<td class="c">'+i+'</td><td></td><td></td><td class="dot"></td><td class="dot"></td><td class="c">☐</td>';
+    tb.appendChild(tr);
+  }
+  function addClip(){
+    var wrap = document.getElementById('clipWrap');
+    var n = wrap.children.length + 1;
+    var src = wrap.children[0];
+    var c = src.cloneNode(true);
+    c.querySelector('.head').firstChild.textContent = 'شورت ' + n + ' ';
+    wrap.appendChild(c);
+  }
+</script>
+</body>
+</html>
